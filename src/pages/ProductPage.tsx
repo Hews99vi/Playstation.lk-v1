@@ -46,13 +46,13 @@ export function ProductPage({ products, onAddToCart }: ProductPageProps) {
   const whatsappUrl = buildProductWhatsAppUrl(product);
 
   return (
-    <div className="bg-bg text-text min-h-screen py-12">
+    <div className="product-page bg-bg text-text min-h-screen py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
+        <div className="product-detail-grid grid gap-8 lg:grid-cols-[1fr_360px]">
           <div className="space-y-6">
             <div className="space-y-3">
               <div
-                className="rounded-xl border border-border overflow-hidden bg-card"
+                className="product-media-frame rounded-xl border border-border overflow-hidden bg-card"
                 style={{ aspectRatio: "4 / 3" }}
               >
                 <img
@@ -64,7 +64,7 @@ export function ProductPage({ products, onAddToCart }: ProductPageProps) {
               </div>
               {galleryImages.length > 1 ? (
                 <div
-                  className="flex"
+                  className="product-thumb-strip flex"
                   style={{ gap: "10px", overflowX: "auto", paddingBottom: "4px" }}
                   aria-label={`${product.name} image gallery`}
                 >
@@ -100,7 +100,7 @@ export function ProductPage({ products, onAddToCart }: ProductPageProps) {
               ) : null}
             </div>
             {product.specs.length ? (
-              <div className="rounded-xl border border-border bg-card p-6 space-y-4">
+              <div className="product-detail-card rounded-xl border border-border bg-card p-6 space-y-4">
                 <h2 className="text-xl font-semibold">Technical Details</h2>
                 <ul className="space-y-2 text-sm text-textMuted">
                   {product.specs.map((spec) => (
@@ -110,7 +110,7 @@ export function ProductPage({ products, onAddToCart }: ProductPageProps) {
               </div>
             ) : null}
             {product.details.length ? (
-              <div className="rounded-xl border border-border bg-card p-6 space-y-4">
+              <div className="product-detail-card rounded-xl border border-border bg-card p-6 space-y-4">
                 <h2 className="text-xl font-semibold">Additional Details</h2>
                 <ul className="space-y-2 text-sm text-textMuted">
                   {product.details.map((detail) => (
@@ -121,7 +121,7 @@ export function ProductPage({ products, onAddToCart }: ProductPageProps) {
             ) : null}
           </div>
 
-          <aside className="rounded-xl border border-border bg-card p-6 space-y-4 self-start sticky top-24">
+          <aside className="product-info-card rounded-xl border border-border bg-card p-6 space-y-4 self-start sticky top-24">
             <p className="text-[10px] uppercase tracking-[0.3em] text-textMuted">{product.category}</p>
             <h1 className="text-2xl font-semibold">{product.name}</h1>
             <p className="text-sm text-textMuted">{product.description}</p>

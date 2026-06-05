@@ -124,7 +124,7 @@ export function Header({ cartCount, isAdmin, theme, onLogout, onToggleTheme }: H
         </div>
 
         {/* Mobile right */}
-        <div className="flex md:hidden items-center" style={{ gap: "4px" }}>
+        <div className="mobile-header-actions flex md:hidden items-center" style={{ gap: "4px" }}>
           <Link
             to="/cart"
             className="relative flex items-center justify-center text-textMuted hover:text-text transition-colors duration-150 rounded-full"
@@ -155,6 +155,7 @@ export function Header({ cartCount, isAdmin, theme, onLogout, onToggleTheme }: H
             className="flex items-center justify-center text-textMuted hover:text-text transition-colors duration-150 rounded-full"
             style={{ width: "36px", height: "36px" }}
             onClick={onToggleTheme}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
             <ThemeIcon style={{ width: "16px", height: "16px" }} />
           </button>
@@ -164,6 +165,8 @@ export function Header({ cartCount, isAdmin, theme, onLogout, onToggleTheme }: H
             className="flex items-center justify-center text-text rounded-full"
             style={{ width: "36px", height: "36px" }}
             onClick={() => setMobileOpen((o) => !o)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? (
               <X style={{ width: "18px", height: "18px" }} />
@@ -177,7 +180,7 @@ export function Header({ cartCount, isAdmin, theme, onLogout, onToggleTheme }: H
       {/* Mobile menu */}
       {mobileOpen && (
         <div
-          className="md:hidden border-t border-border bg-bg"
+          className="mobile-nav-panel md:hidden border-t border-border bg-bg"
           style={{ padding: "8px 16px 16px" }}
         >
           {navItems.map((item) => (

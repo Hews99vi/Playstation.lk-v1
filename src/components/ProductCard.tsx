@@ -14,12 +14,12 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const whatsappUrl = buildProductWhatsAppUrl(product);
 
   return (
-    <article className="group h-full flex flex-col rounded-xl border border-border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1">
-      <Link to={`/product/${product.id}`} className="block aspect-[4/3] bg-bgSubtle">
+    <article className="product-card group h-full flex flex-col rounded-xl border border-border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1">
+      <Link to={`/product/${product.id}`} className="product-card-media block aspect-[4/3] bg-bgSubtle">
         <img src={product.image} alt={product.name} className="h-full w-full object-cover opacity-90" />
       </Link>
-      <div className="p-4 flex flex-1 flex-col gap-3">
-        <div className="space-y-1" style={{ minHeight: "76px" }}>
+      <div className="product-card-body p-4 flex flex-1 flex-col gap-3">
+        <div className="product-card-meta space-y-1" style={{ minHeight: "76px" }}>
           <p className="text-[10px] uppercase tracking-[0.3em] text-textMuted">{product.category}</p>
           <Link to={`/product/${product.id}`} className="line-clamp-2 text-sm font-semibold text-text">
             {product.name}
@@ -27,7 +27,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           <p className="text-xs text-textMuted line-clamp-2">{product.platform}</p>
         </div>
 
-        <div className="flex items-end justify-between gap-3" style={{ minHeight: "44px" }}>
+        <div className="product-card-price-row flex items-end justify-between gap-3" style={{ minHeight: "44px" }}>
           <div className="min-w-0">
             <p className="text-base text-text font-semibold">LKR {product.price.toLocaleString()}</p>
             <p
@@ -47,7 +47,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           ) : null}
         </div>
 
-        <div className="space-y-2" style={{ marginTop: "auto" }}>
+        <div className="product-card-actions space-y-2" style={{ marginTop: "auto" }}>
           <button
             type="button"
             className="w-full inline-flex items-center justify-center gap-2 rounded-md border border-border bg-text text-bg py-2 text-xs font-semibold uppercase tracking-widest hover:opacity-90 transition-opacity duration-200 disabled:opacity-50"

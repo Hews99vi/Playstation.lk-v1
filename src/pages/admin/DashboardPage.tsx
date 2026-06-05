@@ -11,7 +11,7 @@ type DashboardPageProps = {
 
 function statCard(label: string, value: number, helper: string) {
   return (
-    <article className="rounded-xl border border-border bg-card p-5 space-y-2">
+    <article className="admin-stat-card rounded-xl border border-border bg-card p-5 space-y-2">
       <p className="text-xs uppercase tracking-widest text-textMuted">{label}</p>
       <p style={{ fontSize: "32px", fontWeight: 800 }}>{value.toLocaleString()}</p>
       <p className="text-xs text-textMuted">{helper}</p>

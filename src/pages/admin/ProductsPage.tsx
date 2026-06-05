@@ -75,7 +75,7 @@ export function ProductsPage({ products, categories, onRefresh }: ProductsPagePr
         </Link>
       </div>
 
-      <section className="rounded-xl border border-border bg-card p-4 space-y-4">
+      <section className="admin-panel rounded-xl border border-border bg-card p-4 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <label className="block space-y-1">
             <span className="text-xs text-textMuted">Search</span>
@@ -137,7 +137,7 @@ export function ProductsPage({ products, categories, onRefresh }: ProductsPagePr
 
         {error ? <p className="text-xs text-red-500">{error}</p> : null}
 
-        <div className="overflow-x-auto rounded-md border border-border">
+        <div className="admin-table-wrap overflow-x-auto rounded-md border border-border">
           <table className="w-full border-collapse" style={{ minWidth: "760px" }}>
             <thead className="bg-bgSubtle">
               <tr>
@@ -267,7 +267,7 @@ export function ProductsPage({ products, categories, onRefresh }: ProductsPagePr
       {pendingDelete ? (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/40" onClick={() => setPendingDelete(null)} />
-          <div className="relative w-full max-w-sm rounded-xl border border-border bg-card p-5 space-y-4">
+          <div className="admin-modal relative w-full max-w-sm rounded-xl border border-border bg-card p-5 space-y-4">
             <div>
               <p className="text-xs uppercase tracking-widest text-textMuted">Confirm Delete</p>
               <h2 className="text-lg font-semibold">Delete {pendingDelete.name}?</h2>

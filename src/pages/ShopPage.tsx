@@ -67,7 +67,7 @@ export function ShopPage({ products, categories, onAddToCart }: ShopPageProps) {
           <p className="text-textMuted uppercase" style={{ fontSize: "10px", letterSpacing: "0.3em", marginBottom: "8px" }}>
             PlayStation Hardware Store
           </p>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
+          <div className="shop-heading-row" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
             <div>
               <h1 className="text-text font-bold" style={{ fontSize: "28px", letterSpacing: "-0.01em", marginBottom: "4px" }}>
                 {activeCategory === "All" ? "All Products" : activeCategory}
@@ -77,7 +77,7 @@ export function ShopPage({ products, categories, onAddToCart }: ShopPageProps) {
               </p>
             </div>
             {/* Sort + mobile filter trigger */}
-            <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+            <div className="shop-toolbar" style={{ display: "flex", gap: "8px", alignItems: "center" }}>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
@@ -103,7 +103,7 @@ export function ShopPage({ products, categories, onAddToCart }: ShopPageProps) {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-10" style={{ paddingTop: "32px", paddingBottom: "64px" }}>
-        <div className="lg:grid" style={{ gridTemplateColumns: "220px 1fr", gap: "48px", display: "grid" }}>
+        <div className="shop-layout lg:grid" style={{ gridTemplateColumns: "220px 1fr", gap: "48px", display: "grid" }}>
 
           {/* ── Sidebar (desktop) ── */}
           <aside className="hidden lg:block">
@@ -205,7 +205,7 @@ export function ShopPage({ products, categories, onAddToCart }: ShopPageProps) {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "16px" }}>
+              <div className="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "16px" }}>
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
                 ))}
@@ -219,7 +219,7 @@ export function ShopPage({ products, categories, onAddToCart }: ShopPageProps) {
       {mobileFiltersOpen && (
         <div className="fixed inset-0 z-[200] lg:hidden">
           <div className="absolute inset-0 bg-black/40" onClick={() => setMobileFiltersOpen(false)} />
-          <div className="absolute right-0 top-0 bottom-0 bg-bg border-l border-border" style={{ width: "280px", padding: "24px", overflowY: "auto" }}>
+          <div className="shop-filter-drawer absolute right-0 top-0 bottom-0 bg-bg border-l border-border" style={{ width: "280px", padding: "24px", overflowY: "auto" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
               <p className="text-text font-semibold" style={{ fontSize: "15px" }}>Filters</p>
               <button type="button" onClick={() => setMobileFiltersOpen(false)} className="text-textMuted hover:text-text">

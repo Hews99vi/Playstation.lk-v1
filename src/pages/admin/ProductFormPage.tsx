@@ -176,7 +176,7 @@ export function ProductFormPage({ products, categories, onRefresh }: ProductForm
     "w-full rounded-md border border-border bg-bgSubtle px-4 py-3 text-sm text-text focus:outline-none focus:ring-2 focus:ring-accent";
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
+    <form onSubmit={onSubmit} className="admin-product-form space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <Link to="/admin/products" className="inline-flex items-center gap-2 text-xs text-textMuted hover:text-text">
@@ -207,7 +207,7 @@ export function ProductFormPage({ products, categories, onRefresh }: ProductForm
         </p>
       ) : null}
 
-      <section className="rounded-xl border border-border bg-card p-5 space-y-4">
+      <section className="admin-panel rounded-xl border border-border bg-card p-5 space-y-4">
         <div>
           <p className="text-xs uppercase tracking-widest text-textMuted">Basic Info</p>
           <h2 className="text-lg font-semibold">Product setup</h2>
@@ -275,7 +275,7 @@ export function ProductFormPage({ products, categories, onRefresh }: ProductForm
         </div>
       </section>
 
-      <section className="rounded-xl border border-border bg-card p-5 space-y-4">
+      <section className="admin-panel rounded-xl border border-border bg-card p-5 space-y-4">
         <div>
           <p className="text-xs uppercase tracking-widest text-textMuted">Pricing And Stock</p>
           <h2 className="text-lg font-semibold">Availability</h2>
@@ -335,7 +335,7 @@ export function ProductFormPage({ products, categories, onRefresh }: ProductForm
         </div>
       </section>
 
-      <section className="rounded-xl border border-border bg-card p-5 space-y-4">
+      <section className="admin-panel rounded-xl border border-border bg-card p-5 space-y-4">
         <div>
           <p className="text-xs uppercase tracking-widest text-textMuted">Media And Metadata</p>
           <h2 className="text-lg font-semibold">URLs, specs, and details</h2>

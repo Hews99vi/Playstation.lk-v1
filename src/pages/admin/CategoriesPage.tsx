@@ -91,7 +91,7 @@ export function CategoriesPage({ categories, products, onRefresh }: CategoriesPa
         <h1 className="text-2xl font-semibold">Catalog groups</h1>
       </div>
 
-      <section className="rounded-xl border border-border bg-card p-5 space-y-4">
+      <section className="admin-panel rounded-xl border border-border bg-card p-5 space-y-4">
         <form onSubmit={addCategory} className="flex flex-wrap gap-3">
           <label className="flex-1 min-w-[240px] block space-y-1">
             <span className="text-xs text-textMuted">New category</span>
@@ -115,7 +115,7 @@ export function CategoriesPage({ categories, products, onRefresh }: CategoriesPa
         {message ? <p className="text-xs text-emerald-600">{message}</p> : null}
         {error ? <p className="text-xs text-red-500">{error}</p> : null}
 
-        <div className="overflow-x-auto rounded-md border border-border">
+        <div className="admin-table-wrap overflow-x-auto rounded-md border border-border">
           <table className="w-full border-collapse" style={{ minWidth: "560px" }}>
             <thead className="bg-bgSubtle">
               <tr>
@@ -217,7 +217,7 @@ export function CategoriesPage({ categories, products, onRefresh }: CategoriesPa
       {pendingDelete ? (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/40" onClick={() => setPendingDelete(null)} />
-          <div className="relative w-full max-w-sm rounded-xl border border-border bg-card p-5 space-y-4">
+          <div className="admin-modal relative w-full max-w-sm rounded-xl border border-border bg-card p-5 space-y-4">
             <div>
               <p className="text-xs uppercase tracking-widest text-textMuted">Confirm Delete</p>
               <h2 className="text-lg font-semibold">Delete {pendingDelete.name}?</h2>

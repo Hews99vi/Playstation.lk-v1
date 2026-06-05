@@ -83,7 +83,7 @@ export function AdminLayout({ theme, onToggleTheme }: AdminLayoutProps) {
   }
 
   const sidebar = (
-    <aside style={sidebarStyle}>
+    <aside className="admin-sidebar" style={sidebarStyle}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
         <Link to="/admin" style={{ display: "block" }}>
           <p className="text-xs uppercase tracking-widest text-textMuted">PlayStation.lk</p>
@@ -155,6 +155,7 @@ export function AdminLayout({ theme, onToggleTheme }: AdminLayoutProps) {
 
       <div style={{ minWidth: 0, flex: 1 }}>
         <header
+          className="admin-topbar"
           style={{
             height: "64px",
             borderBottom: "1px solid var(--color-border)",
@@ -223,7 +224,7 @@ export function AdminLayout({ theme, onToggleTheme }: AdminLayoutProps) {
           </div>
         </header>
 
-        <main style={{ padding: "22px", maxWidth: "1280px", margin: "0 auto" }}>
+        <main className="admin-main" style={{ padding: "22px", maxWidth: "1280px", margin: "0 auto" }}>
           <Outlet />
         </main>
       </div>

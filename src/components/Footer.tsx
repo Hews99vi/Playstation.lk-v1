@@ -45,12 +45,14 @@ const COLS = [
 export function Footer() {
   return (
     <footer
+      className="site-footer"
       style={{
         borderTop: "1px solid var(--color-border)",
         background: "var(--color-bg)",
       }}
     >
       <div
+        className="site-footer-inner"
         style={{
           maxWidth: "1280px",
           margin: "0 auto",
@@ -59,14 +61,14 @@ export function Footer() {
       >
         {/* Single grid — auto-fit handles responsive layout natively */}
         <div
+          className="site-footer-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
             gap: "24px",
           }}
         >
           {COLS.map(({ title, links }) => (
-            <div key={title}>
+            <div key={title} className="site-footer-col">
               <p
                 style={{
                   fontSize: "12px",
@@ -101,6 +103,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div
+          className="site-footer-bottom"
           style={{
             marginTop: "28px",
             paddingTop: "18px",

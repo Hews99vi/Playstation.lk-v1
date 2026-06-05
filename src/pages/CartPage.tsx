@@ -85,7 +85,7 @@ export function CartPage({ cart, removeFromCart, updateQuantity, clearCart }: Ca
           </div>
         ) : (
           /* ── Cart with items ── */
-          <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
+          <div className="cart-layout grid gap-6 lg:grid-cols-[1fr_360px]">
 
             {/* Left: cart items */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -97,11 +97,11 @@ export function CartPage({ cart, removeFromCart, updateQuantity, clearCart }: Ca
                 return (
                 <article
                   key={item.id}
-                  className="rounded-xl border border-border bg-card"
+                  className="cart-line-item rounded-xl border border-border bg-card"
                   style={{ padding: "16px", display: "flex", gap: "16px", alignItems: "flex-start" }}
                 >
                   {/* Thumbnail */}
-                  <Link to={`/product/${item.id}`} style={{ flexShrink: 0 }}>
+                  <Link to={`/product/${item.id}`} className="cart-line-image" style={{ flexShrink: 0 }}>
                     <img
                       src={item.image}
                       alt={item.name}
@@ -111,7 +111,7 @@ export function CartPage({ cart, removeFromCart, updateQuantity, clearCart }: Ca
                   </Link>
 
                   {/* Details */}
-                  <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <div className="cart-line-content" style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
                     <div>
                       <Link
                         to={`/product/${item.id}`}
@@ -126,7 +126,7 @@ export function CartPage({ cart, removeFromCart, updateQuantity, clearCart }: Ca
                     </div>
 
                     {/* Qty + price row */}
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px" }}>
+                    <div className="cart-line-meta-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px" }}>
                       {/* Qty controls */}
                       <div
                         className="border border-border rounded-lg"
@@ -167,7 +167,7 @@ export function CartPage({ cart, removeFromCart, updateQuantity, clearCart }: Ca
                       </div>
 
                       {/* Price + remove */}
-                      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div className="cart-line-price-actions" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                         <p className="text-text font-semibold" style={{ fontSize: "15px" }}>
                           LKR {(item.price * item.quantity).toLocaleString()}
                         </p>
@@ -196,7 +196,7 @@ export function CartPage({ cart, removeFromCart, updateQuantity, clearCart }: Ca
 
             {/* Right: order summary */}
             <aside
-              className="rounded-xl border border-border bg-card self-start sticky top-24"
+              className="cart-summary rounded-xl border border-border bg-card self-start sticky top-24"
               style={{ padding: "24px" }}
             >
               <p
@@ -261,7 +261,7 @@ export function CartPage({ cart, removeFromCart, updateQuantity, clearCart }: Ca
               </p>
 
               {/* Continue shopping + Clear cart */}
-              <div className="border-t border-border" style={{ marginTop: "16px", paddingTop: "16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div className="cart-summary-footer border-t border-border" style={{ marginTop: "16px", paddingTop: "16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <Link
                   to="/shop"
                   className="text-textMuted hover:text-text transition-colors duration-150"

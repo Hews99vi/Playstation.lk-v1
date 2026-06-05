@@ -209,12 +209,12 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
   return (
     <div className="bg-bg text-text">
       {/* ── Hero ── */}
-      <section className="hero-section relative overflow-hidden border-b border-border">
+      <section className="hero-section home-hero relative overflow-hidden border-b border-border">
         <div className="hero-overlay absolute inset-0" />
         <div className="container relative mx-auto px-4 py-16 sm:py-20 lg:py-28 sm:px-6 lg:px-10">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             {/* Left: text */}
-            <div className="space-y-5">
+            <div className="home-hero-copy space-y-5">
               <p className="text-[10px] uppercase tracking-[0.4em] text-textMuted">
                 Home — Premium PlayStation Hardware
               </p>
@@ -225,7 +225,7 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
                 Sri Lanka&apos;s definitive authority for authentic PlayStation consoles, controllers,
                 games, and expert repair services.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="home-hero-actions flex flex-wrap gap-3">
                 <Link
                   to="/shop"
                   className="inline-flex items-center gap-2 rounded-md bg-text text-bg px-5 py-3 text-xs uppercase tracking-[0.2em] font-semibold hover:opacity-90 transition-opacity duration-200"
@@ -243,7 +243,7 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
             </div>
 
             {/* Right: image */}
-            <div className="rounded-xl border border-border bg-card p-3 backdrop-blur-sm">
+            <div className="home-hero-media rounded-xl border border-border bg-card p-3 backdrop-blur-sm">
               <img
                 src="/assets/hero-ps5.jpg"
                 alt="PlayStation 5 DualSense Controllers"
@@ -314,8 +314,8 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
       {/* ── Repair CTA ── */}
       <section className="section-pad border-t border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <article className="rounded-xl border border-border bg-card p-6 h-full">
+          <div className="repair-cta-grid grid gap-6 lg:grid-cols-2">
+            <article className="repair-cta-card rounded-xl border border-border bg-card p-6 h-full">
               <div className="flex h-full flex-col" style={{ gap: "28px" }}>
                 <div className="space-y-3">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-textMuted">
@@ -329,7 +329,7 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
                 </div>
 
                 <div
-                  className="border border-border"
+                  className="repair-stats border border-border"
                   style={{
                     borderRadius: "14px",
                     display: "grid",
@@ -353,7 +353,7 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
                   ))}
                 </div>
 
-                <div style={{ display: "grid", gap: "18px" }} className="lg:grid-cols-2">
+                <div style={{ display: "grid", gap: "18px" }} className="repair-details-grid lg:grid-cols-2">
                   <div>
                     <div className="flex items-center gap-2" style={{ marginBottom: "14px" }}>
                       <Wrench className="h-4 w-4 text-accent" />
@@ -411,7 +411,7 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
                 </div>
 
                 <div
-                  className="border-t border-border"
+                  className="repair-footer-row border-t border-border"
                   style={{
                     marginTop: "auto",
                     paddingTop: "20px",
@@ -454,7 +454,7 @@ export function HomePage({ products, sections, onAddToCart }: HomePageProps) {
                 </div>
               </div>
             </article>
-            <div className="rounded-xl border border-border overflow-hidden">
+            <div className="repair-video-panel rounded-xl border border-border overflow-hidden">
               <ScrollPlayRepairVideo />
             </div>
           </div>

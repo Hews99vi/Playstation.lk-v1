@@ -144,11 +144,11 @@ export function RepairsPage() {
   };
 
   return (
-    <div className="bg-bg text-text min-h-screen">
+    <div className="repairs-page bg-bg text-text min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-10" style={{ maxWidth: "840px" }}>
 
         {/* Page header */}
-        <div style={{ paddingTop: "44px", paddingBottom: "32px" }}>
+        <div className="repair-page-header" style={{ paddingTop: "44px", paddingBottom: "32px" }}>
           <p className="text-textMuted" style={{ fontSize: "12px", display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px" }}>
             <span>🔑</span>
             <span>Premium repair studio</span>
@@ -163,7 +163,7 @@ export function RepairsPage() {
 
         {/* AI diagnosis entry */}
         <div
-          className="rounded-xl border border-border bg-card"
+          className="repair-ai-entry rounded-xl border border-border bg-card"
           style={{ padding: "20px", marginBottom: "24px" }}
         >
           <div
@@ -213,7 +213,7 @@ export function RepairsPage() {
         </div>
 
         {/* Feature cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px", marginBottom: "40px" }} className="sm:grid-cols-4">
+        <div className="repair-feature-grid sm:grid-cols-4" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px", marginBottom: "40px" }}>
           {FEATURE_CARDS.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="rounded-xl border border-border" style={{ padding: "16px" }}>
               <Icon className="text-textMuted" style={{ width: "15px", height: "15px", marginBottom: "8px" }} />
@@ -224,10 +224,10 @@ export function RepairsPage() {
         </div>
 
         {/* Step form card */}
-        <div className="rounded-xl border border-border" style={{ marginBottom: "60px", overflow: "hidden" }}>
+        <div className="repair-step-card rounded-xl border border-border" style={{ marginBottom: "60px", overflow: "hidden" }}>
 
           {/* Step header */}
-          <div style={{ padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", borderBottom: "1px solid var(--color-border)" }}>
+          <div className="repair-step-header" style={{ padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", borderBottom: "1px solid var(--color-border)" }}>
             <div>
               <p className="text-textMuted uppercase" style={{ fontSize: "10px", letterSpacing: "0.25em", marginBottom: "4px" }}>
                 Step {step} of 3
@@ -251,12 +251,12 @@ export function RepairsPage() {
           </div>
 
           {/* Step content */}
-          <div style={{ padding: "24px" }}>
+          <div className="repair-step-content" style={{ padding: "24px" }}>
 
             {/* Step 1: Device */}
             {step === 1 && (
               <div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "20px" }}>
+                <div className="repair-device-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "20px" }}>
                   {DEVICES.map(({ id, label, desc }) => (
                     <button
                       key={id}
@@ -430,7 +430,7 @@ export function RepairsPage() {
                   ) : null}
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div className="repair-step-nav" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <button
                     type="button"
                     onClick={() => setStep(1)}
@@ -456,7 +456,7 @@ export function RepairsPage() {
             {/* Step 3: Details */}
             {step === 3 && (
               <div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="sm:grid-cols-2">
+                <div className="repair-details-grid sm:grid-cols-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }}>
                   <div>
                     <label className="text-textMuted" style={{ fontSize: "12px", display: "block", marginBottom: "6px" }}>Full name</label>
                     <input
@@ -493,7 +493,7 @@ export function RepairsPage() {
                 {/* Delivery method */}
                 <div style={{ marginBottom: "20px" }}>
                   <p className="text-textMuted" style={{ fontSize: "12px", marginBottom: "10px" }}>How will you send your device?</p>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                  <div className="repair-logistics-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                     <button
                       type="button"
                       id="logistics-drop-off"
@@ -524,7 +524,7 @@ export function RepairsPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div className="repair-step-nav" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <button
                     type="button"
                     onClick={() => setStep(2)}
@@ -584,7 +584,7 @@ export function RepairsPage() {
               <p>Email: {CONTACT_EMAIL}</p>
             </div>
 
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div className="repair-confirm-actions" style={{ display: "flex", gap: "10px" }}>
               <button
                 type="button"
                 onClick={() => { window.location.href = "/"; }}

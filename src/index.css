@@ -34,3 +34,449 @@
 @media (min-width: 1024px) {
   .lg\:col-span-2 { grid-column: span 2 / span 2; }
 }
+
+/* Mobile experience pass: explicit rules are used because this project ships a
+   frozen utility stylesheet rather than generating Tailwind classes at build. */
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.product-card {
+  min-width: 0;
+}
+
+.product-card-media img,
+.product-media-frame img {
+  background: var(--color-bg-subtle);
+}
+
+.product-thumb-strip {
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+}
+
+.product-thumb-strip > button {
+  scroll-snap-align: start;
+}
+
+.shop-filter-drawer,
+.admin-sidebar {
+  max-width: min(88vw, 320px);
+}
+
+.admin-table-wrap {
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-table-wrap table {
+  white-space: nowrap;
+}
+
+.admin-panel,
+.product-detail-card,
+.product-info-card,
+.cart-summary,
+.repair-step-card,
+.repair-ai-entry {
+  min-width: 0;
+}
+
+.repair-video-panel {
+  min-height: 360px;
+  background: var(--color-bg-subtle);
+}
+
+.repair-video-panel video {
+  min-height: 360px;
+}
+
+.site-footer {
+  overflow: hidden;
+}
+
+.site-footer-inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px 40px 24px;
+}
+
+.site-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.site-footer-col {
+  min-width: 0;
+}
+
+.site-footer-col a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1023px) {
+  .shop-layout {
+    display: block !important;
+  }
+
+  .product-info-card,
+  .cart-summary {
+    position: static !important;
+  }
+
+  .repair-video-panel,
+  .repair-video-panel video {
+    min-height: 320px;
+  }
+
+  .admin-topbar {
+    padding-inline: 14px !important;
+  }
+
+  .admin-main {
+    padding: 18px !important;
+  }
+
+  .site-footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  html {
+    font-size: 15px;
+  }
+
+  .mobile-nav-panel {
+    padding-bottom: max(16px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .site-footer-inner {
+    padding: 28px 22px 22px !important;
+  }
+
+  .site-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 28px !important;
+  }
+
+  .site-footer-col p {
+    font-size: 13px !important;
+  }
+
+  .site-footer-col a {
+    font-size: 13px !important;
+    line-height: 1.35;
+  }
+
+  .site-footer-bottom {
+    align-items: flex-start !important;
+    flex-direction: column;
+    gap: 6px !important;
+  }
+
+  .home-hero .container {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+
+  .home-hero-copy h1 {
+    font-size: 2rem;
+    line-height: 1.05;
+  }
+
+  .home-hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero-actions a,
+  .repair-footer-row a,
+  .repair-ai-entry button,
+  .repair-step-nav button,
+  .repair-confirm-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .home-hero-media {
+    padding: 8px !important;
+  }
+
+  .home-hero-media img {
+    max-height: 220px !important;
+  }
+
+  .product-grid,
+  .section-pad .grid {
+    gap: 14px !important;
+  }
+
+  .product-card {
+    border-radius: 14px;
+  }
+
+  .product-card-media {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .product-card-body {
+    padding: 14px !important;
+    gap: 10px !important;
+  }
+
+  .product-card-meta {
+    min-height: 70px !important;
+  }
+
+  .product-card-price-row {
+    align-items: flex-start !important;
+    flex-direction: column;
+    min-height: 0 !important;
+    gap: 6px !important;
+  }
+
+  .product-card-price-row span {
+    text-align: left !important;
+  }
+
+  .product-card-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .shop-heading-row {
+    align-items: stretch !important;
+  }
+
+  .shop-toolbar {
+    width: 100%;
+  }
+
+  .shop-toolbar select {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .shop-filter-drawer {
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none;
+    max-height: min(82vh, 620px);
+    border-left: 0 !important;
+    border-top: 1px solid var(--color-border);
+    border-radius: 18px 18px 0 0;
+    padding: 20px !important;
+    padding-bottom: max(20px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .product-page {
+    padding-top: 24px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .product-detail-grid {
+    gap: 20px !important;
+  }
+
+  .product-media-frame {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .product-thumb-strip {
+    gap: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .product-thumb-strip button {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .product-info-card,
+  .product-detail-card {
+    padding: 18px !important;
+  }
+
+  .product-info-card h1 {
+    font-size: 1.35rem;
+  }
+
+  .cart-line-item {
+    display: grid !important;
+    grid-template-columns: 76px 1fr;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  .cart-line-image img {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  .cart-line-meta-row {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+
+  .cart-line-price-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .cart-summary {
+    padding: 18px !important;
+  }
+
+  .cart-summary-footer {
+    align-items: flex-start !important;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .repair-cta-card,
+  .admin-panel {
+    padding: 16px !important;
+  }
+
+  .repair-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .repair-stats > div {
+    border-left: 0 !important;
+    border-top: 1px solid var(--color-border);
+    padding: 14px !important;
+  }
+
+  .repair-stats > div:first-child {
+    border-top: 0 !important;
+  }
+
+  .repair-footer-row {
+    align-items: stretch !important;
+    flex-direction: column;
+  }
+
+  .repair-video-panel,
+  .repair-video-panel video {
+    min-height: 260px;
+  }
+
+  .repair-page-header {
+    padding-top: 32px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .repair-page-header h1 {
+    font-size: 2rem !important;
+  }
+
+  .repair-ai-entry {
+    padding: 16px !important;
+  }
+
+  .repair-feature-grid,
+  .repair-device-grid,
+  .repair-details-grid,
+  .repair-logistics-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .repair-step-header {
+    align-items: stretch !important;
+    flex-direction: column;
+    padding: 18px !important;
+  }
+
+  .repair-step-header > div:last-child {
+    max-width: none !important;
+  }
+
+  .repair-step-content {
+    padding: 18px !important;
+  }
+
+  .repair-step-nav {
+    align-items: stretch !important;
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+
+  .repair-confirm-actions {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: min(88vw, 300px) !important;
+    padding: 16px !important;
+  }
+
+  .admin-topbar {
+    height: auto !important;
+    min-height: 62px;
+    padding: 10px 12px !important;
+  }
+
+  .admin-topbar h2 {
+    font-size: 16px !important;
+  }
+
+  .admin-topbar p {
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .admin-main {
+    padding: 14px !important;
+    width: 100%;
+  }
+
+  .admin-stat-card {
+    padding: 16px !important;
+  }
+
+  .admin-product-form > .flex:first-child {
+    align-items: stretch !important;
+    flex-direction: column;
+  }
+
+  .admin-product-form > .flex:first-child button,
+  .landing-section-card > .flex:first-child button,
+  .admin-panel form button[type="submit"] {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-table-wrap {
+    margin-inline: -2px;
+  }
+
+  .admin-modal {
+    border-radius: 18px 18px 0 0 !important;
+    align-self: flex-end;
+    max-width: none !important;
+  }
+
+  .landing-assigned-item {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+
+  .landing-assigned-item > div:last-child {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .landing-product-option {
+    align-items: flex-start !important;
+  }
+}

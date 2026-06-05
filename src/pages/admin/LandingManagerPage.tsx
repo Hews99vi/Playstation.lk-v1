@@ -149,7 +149,7 @@ export function LandingManagerPage({ products, homeSections, onRefresh }: Landin
           const missingProductCount = draft.productIds.length - selectedProducts.length;
 
           return (
-            <section key={section.id} className="rounded-xl border border-border bg-card p-5 space-y-5">
+            <section key={section.id} className="admin-panel landing-section-card rounded-xl border border-border bg-card p-5 space-y-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-textMuted">{section.id}</p>
@@ -239,7 +239,7 @@ export function LandingManagerPage({ products, homeSections, onRefresh }: Landin
                       return (
                         <div
                           key={product.id}
-                          className="flex items-center justify-between gap-3 rounded-md border border-border bg-card p-3"
+                          className="landing-assigned-item flex items-center justify-between gap-3 rounded-md border border-border bg-card p-3"
                         >
                           <div style={{ minWidth: 0 }}>
                             <p className="text-sm font-semibold truncate">{product.name}</p>
@@ -285,7 +285,7 @@ export function LandingManagerPage({ products, homeSections, onRefresh }: Landin
                     {products.map((product) => (
                       <label
                         key={product.id}
-                        className="flex items-center gap-3 rounded-md border border-border bg-card p-3"
+                        className="landing-product-option flex items-center gap-3 rounded-md border border-border bg-card p-3"
                       >
                         <input
                           type="checkbox"
