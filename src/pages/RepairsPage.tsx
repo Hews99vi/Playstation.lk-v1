@@ -3,9 +3,6 @@ import { useState } from "react";
 import { diagnoseRepairIssue, type RepairDiagnosis } from "../services/geminiDiagnosis";
 
 const WHATSAPP_NUMBER = "94767301586";
-const CONTACT_PHONE = "+94713063163";
-const CONTACT_EMAIL = "hewawasamnimantha@gmail.com";
-
 type Device = "PlayStation" | "Laptop" | "Other";
 type Logistics = "drop-off" | "courier";
 
@@ -45,8 +42,6 @@ function severityColor(severity: RepairDiagnosis["severity"]): string {
 
 export function RepairsPage() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [diagnosis, setDiagnosis] = useState<RepairDiagnosis | null>(null);
   const [diagnosisLoading, setDiagnosisLoading] = useState(false);
   const [diagnosisError, setDiagnosisError] = useState("");
@@ -66,7 +61,6 @@ export function RepairsPage() {
   }
 
   function startAiDiagnosis() {
-    setSubmitted(false);
     setDiagnosis(null);
     setDiagnosisError("");
     patch({ device: form.device || "PlayStation", useAiHelp: true });
@@ -92,10 +86,8 @@ export function RepairsPage() {
     }
   }
 
-  async function handleSubmit() {
+  function handleSubmit() {
     if (!form.name || !form.phone) return;
-    setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
 
     const msg = [
       "🎮 *REPAIR TICKET — PlayStation.lk*",
@@ -114,18 +106,7 @@ export function RepairsPage() {
       .join("\n");
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-    setSubmitting(false);
-    setSubmitted(true);
-  }
-
-  function resetForm() {
-    setSubmitted(false);
-    setStep(1);
-    setForm({ device: "", issue: "", useAiHelp: false, name: "", phone: "", email: "", logistics: "drop-off" });
-    setDiagnosis(null);
-    setDiagnosisError("");
-    setDiagnosisLoading(false);
+    window.location.assign(url);
   }
 
   const progressPct = step === 1 ? 33 : step === 2 ? 67 : 100;
@@ -175,7 +156,7 @@ export function RepairsPage() {
               flexWrap: "wrap",
             }}
           >
-            <div className="flex items-start gap-3" style={{ flex: 1, minWidth: "260px" }}>
+            <div className="repair-ai-copy flex items-start gap-3" style={{ flex: "1 1 0" }}>
               <span
                 className="bg-accentSoft text-accent"
                 style={{
@@ -190,7 +171,7 @@ export function RepairsPage() {
               >
                 <Sparkles style={{ width: "18px", height: "18px" }} />
               </span>
-              <div>
+              <div className="repair-ai-text">
                 <p className="text-text" style={{ fontSize: "16px", fontWeight: 600, marginBottom: "4px" }}>
                   AI repair diagnosis
                 </p>
@@ -308,8 +289,8 @@ export function RepairsPage() {
 
                 {/* AI help toggle */}
                 <div className="rounded-xl border border-border" style={{ padding: "16px", marginBottom: "20px" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: "16px", alignItems: "flex-start", flexWrap: "wrap" }}>
-                    <div className="flex items-start gap-3" style={{ flex: "1", minWidth: "240px" }}>
+                  <div className="repair-ai-toolbar" style={{ display: "flex", justifyContent: "space-between", gap: "16px", alignItems: "flex-start", flexWrap: "wrap" }}>
+                    <div className="repair-ai-copy flex items-start gap-3" style={{ flex: "1 1 0" }}>
                       <span
                         className="bg-accentSoft text-accent"
                         style={{
@@ -324,7 +305,7 @@ export function RepairsPage() {
                       >
                         <Sparkles style={{ width: "16px", height: "16px" }} />
                       </span>
-                      <div>
+                      <div className="repair-ai-text">
                         <p className="text-text" style={{ fontSize: "13px", fontWeight: "600" }}>
                           AI diagnosis assistant
                         </p>
@@ -373,9 +354,9 @@ export function RepairsPage() {
                   ) : null}
 
                   {diagnosis ? (
-                    <div className="rounded-lg border border-border bg-bgSubtle" style={{ marginTop: "14px", padding: "14px" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: "12px", alignItems: "flex-start", marginBottom: "10px" }}>
-                        <div>
+                    <div className="repair-diagnosis-result rounded-lg border border-border bg-bgSubtle" style={{ marginTop: "14px", padding: "14px" }}>
+                      <div className="repair-diagnosis-head" style={{ display: "flex", justifyContent: "space-between", gap: "12px", alignItems: "flex-start", marginBottom: "10px" }}>
+                        <div className="repair-diagnosis-text">
                           <p className="text-text" style={{ fontSize: "13px", fontWeight: "600" }}>
                             {diagnosis.estimatedRepairType}
                           </p>
@@ -536,22 +517,13 @@ export function RepairsPage() {
                   <button
                     type="button"
                     id="submit-repair"
-                    disabled={!form.name.trim() || !form.phone.trim() || submitting}
+                    disabled={!form.name.trim() || !form.phone.trim()}
                     onClick={handleSubmit}
                     className="inline-flex items-center bg-accent text-white font-medium rounded-md hover:bg-accentStrong transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                     style={{ padding: "10px 24px", fontSize: "14px", gap: "8px" }}
                   >
-                    {submitting ? (
-                      <>
-                        <span className="rounded-full border-2 animate-spin" style={{ width: "14px", height: "14px", borderColor: "rgba(255,255,255,0.3)", borderTopColor: "white" }} />
-                        Sending…
-                      </>
-                    ) : (
-                      <>
-                        <MapPin style={{ width: "14px", height: "14px" }} />
-                        Book repair
-                      </>
-                    )}
+                    <MapPin style={{ width: "14px", height: "14px" }} />
+                    Book repair
                   </button>
                 </div>
               </div>
@@ -560,51 +532,6 @@ export function RepairsPage() {
         </div>
       </div>
 
-      {/* Confirmation modal */}
-      {submitted && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center" style={{ padding: "16px" }}>
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={resetForm} />
-          <div className="relative bg-bg rounded-xl border border-border" style={{ padding: "28px", width: "100%", maxWidth: "420px", boxShadow: "0 20px 60px rgba(0,0,0,0.2)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
-              <p className="text-text font-semibold" style={{ fontSize: "16px" }}>Booking confirmed</p>
-              <button type="button" onClick={resetForm} className="text-textMuted hover:text-text" style={{ fontSize: "13px" }}>Close</button>
-            </div>
-
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
-              <span style={{ fontSize: "18px" }}>✅</span>
-              <span className="text-emerald-600 font-medium" style={{ fontSize: "14px" }}>WhatsApp notification sent</span>
-            </div>
-
-            <p className="text-textMuted" style={{ fontSize: "13px", lineHeight: "1.6", marginBottom: "12px" }}>
-              Your booking has been sent to our team. We will contact you within 2 to 4 hours to schedule the repair.
-            </p>
-
-            <div className="text-textMuted" style={{ fontSize: "13px", marginBottom: "20px" }}>
-              <p>Phone: {CONTACT_PHONE}</p>
-              <p>Email: {CONTACT_EMAIL}</p>
-            </div>
-
-            <div className="repair-confirm-actions" style={{ display: "flex", gap: "10px" }}>
-              <button
-                type="button"
-                onClick={() => { window.location.href = "/"; }}
-                className="bg-accent text-white font-medium rounded-full hover:bg-accentStrong transition-colors"
-                style={{ padding: "9px 20px", fontSize: "13px" }}
-              >
-                Return home
-              </button>
-              <button
-                type="button"
-                onClick={resetForm}
-                className="border border-border text-text rounded-full hover:bg-bgSubtle transition-colors"
-                style={{ padding: "9px 20px", fontSize: "13px" }}
-              >
-                Book another repair
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

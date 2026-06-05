@@ -93,6 +93,22 @@ body,
   min-height: 360px;
 }
 
+.repair-ai-copy,
+.repair-ai-text,
+.repair-diagnosis-result,
+.repair-diagnosis-text {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.repair-ai-text,
+.repair-diagnosis-text,
+.repair-diagnosis-result li,
+.repair-diagnosis-result p {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
 .site-footer {
   overflow: hidden;
 }
@@ -380,6 +396,26 @@ body,
 
   .repair-ai-entry {
     padding: 16px !important;
+  }
+
+  .repair-ai-toolbar,
+  .repair-ai-copy,
+  .repair-diagnosis-head {
+    align-items: stretch !important;
+    flex-direction: column;
+  }
+
+  .repair-ai-copy {
+    flex-basis: auto !important;
+  }
+
+  .repair-diagnosis-head {
+    gap: 10px !important;
+  }
+
+  .repair-diagnosis-head > span {
+    align-self: flex-start;
+    white-space: normal !important;
   }
 
   .repair-feature-grid,
